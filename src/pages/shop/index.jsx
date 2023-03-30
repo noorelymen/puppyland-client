@@ -6,7 +6,7 @@ import useFetch from "../../hooks/useFetch";
 
 export default function ShopPage() {
   const params = useParams();
-  const {data, error, loading} = useFetch(`/pets/category/${params.category}`)
+  const {data, error, loading} = useFetch(`/category/${params.category}`)
 
   console.log("category page data")
   console.log(data)
