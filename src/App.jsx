@@ -116,7 +116,7 @@ function App() {
       <RouterProvider router={router} />
       <div className="non-responsive">
         <h1>Hey you!</h1>
-        <p>This website is not responsive yet because I suck at responsivity T-T. Only view on 1440px wide screens.</p>
+        <p>This website is not responsive yet because I get lazy when it comes to responsivity T-T. Only view on 1440px wide screens.</p>
 
       </div>
     </>
