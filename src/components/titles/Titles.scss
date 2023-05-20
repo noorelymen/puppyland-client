@@ -1,0 +1,34 @@
+
+.section.titles {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.titles .container {
+  width: 100%;
+  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.section-title {
+    display: block;
+    width: 100%;
+    color: #2e2e2e;
+    font-size: 3.5vw;
+    text-align: left;
+    margin-top: -20px;
+    margin-bottom: 30px;
+  }
+  
+  .section-subtitle {
+    display: block;
+    width: 100%;
+    color: var(--accent-color);
+    font-size: 2.3vw;
+    text-align: left;
+    font-family: 'Lietome', serif;
+  }
+  

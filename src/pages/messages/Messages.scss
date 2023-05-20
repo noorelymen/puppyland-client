@@ -1,0 +1,100 @@
+.my-messages {
+    display: flex;
+    justify-content: center;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        margin-top: 150px;
+        width: 1400px;
+        padding: 50px 0px;
+        gap: 20px;
+
+        a {
+            font-weight: 400;
+            color: gray;
+            text-decoration: none;
+        }
+
+        hr {
+            border: .3px solid #eee;
+        }
+
+        .breadcrumbs {
+            font-weight: 300;
+            font-size: 13px;
+            color: #555;
+        }
+
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            h1 {
+                color: #4b8683;
+                font-size: 1.8rem;
+                font-family: Posterama;
+            }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse; /* Added border-collapse property */
+            
+            tr {
+                height: 100px;
+
+                th {
+                    text-align: left;
+                    font-weight: 500;
+
+                    &:last-child {
+                        text-align: center;
+                    }
+                }
+               
+                td {
+                    
+                    padding: 15px;
+                    font-size: .9rem; 
+
+                    .faIcon {
+                        color: #fff;
+                        border-radius: 50%;
+                        padding: 10px;
+                        background-color: #accde6;
+                        cursor: pointer;
+                        margin-left: 15px;
+                    }
+
+                    &:first-child {
+                        font-weight: 500;
+                    }
+
+                    &:nth-child(2),
+                    &:nth-child(3) {
+                        color: gray
+                    }
+
+                    &:nth-child(4) {
+                        padding-left: 25px !important;
+                    }
+
+                    &:last-child {
+                        text-align: center;
+                    }
+                }
+
+                &.active {
+                    background-color: #1dbf730f;
+                }
+            }
+
+            tr:hover:not(:first-child){
+                background-color: #0d935417;
+            }
+
+        }
+    }
+}

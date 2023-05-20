@@ -1,15 +1,13 @@
 import React from 'react'
-import TopBar from '../../topbar'
-import NavBar from '../../navbar'
-import Footer from '../../footer'
+import NavBar from '../../navbar/Navbar'
+import Footer from '../../footer/Footer'
 
 export default function ArchivePage({children}) {
   return (
     <>
-        <TopBar />
-        <NavBar />
-        {children}
-        <Footer />
+      <NavBar />
+      {children}
+      <Footer />
     </>
   )
 }

@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-const baseUrl = "https://petpal-api.onrender.com/api";
+
+//LOCALHOST
+const baseUrl = "http://localhost:8800/api";
+//LIVE
+//const baseUrl = "https://puppyland-api.onrender.com/api";
 
 const useFetch = (url) => {
   const [data, setData] = useState(null);

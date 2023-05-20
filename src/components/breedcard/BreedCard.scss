@@ -1,0 +1,30 @@
+.breed-card {
+    width: 252px;
+    height: 344px;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    .name {
+      font-family: 'Posterama';
+      font-weight: 600;
+      position: absolute;
+      top: 15px;
+      left: 15px;
+    }
+  }
+
+.breed-card:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0);
+  transform: translateY(-15px);
+  transition: transform .2s ease-in-out;
+}
+

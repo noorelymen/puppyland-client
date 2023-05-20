@@ -1,35 +1,142 @@
 import './App.css'
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom"
-import Home from './pages/home'
-import Pets from './pages/pets'
-import Pet from './pages/pet'
-import Shop from './pages/shop'
-import About from './pages/about'
-import Contact from './pages/contact'
-import Wishlist from './pages/wishlist'
-import Auth from './pages/auth'
+// import {
+//   BrowserRouter,
+//   Routes,
+//   Route,
+// } from "react-router-dom"
+
+import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
+import Navbar from './components/navbar/Navbar'
+import Footer from './components/footer/Footer'
+
+import Home from './pages/home/Home'
+import Puppies from './pages/puppies/Puppies'
+import Puppy from './pages/puppy/Puppy'
+import Shop from './pages/shop/Shop'
+import Blog from './pages/blog/Blog'
+import About from './pages/about/About'
+import Contact from './pages/contact/Contact'
+import Wishlist from './pages/wishlist/Wishlist'
+import Login from './pages/login/Login'
+import NotFoundPage from "./pages/404/NotFound";
+import Register from './pages/register/Register'
+import AddPuppy from './pages/addpuppy/AddPuppy'
+import Adoptions from './pages/adoptions/Adoptions'
+import Message from './pages/message/Message'
+import Messages from './pages/messages/Messages'
+import MyPuppies from './pages/mypuppies/MyPuppies'
 
 function App() {
 
+  const Layout = () => {
+    return (
+      <div className="app">
+        <Navbar />
+        <Outlet />
+        <Footer />
+      </div>
+    )
+  }
+
+  const router = createBrowserRouter ([
+    {
+      path: "/",
+      element: <Layout />,
+      children: [
+        {
+          path:"/",
+          element: <Home/>
+        },
+        {
+          path: "/puppies",
+          element: <Puppies />,
+        }, {
+          path: "/shop",
+          element: <Shop />,
+        }, 
+        {
+          path: "/blog",
+          element: <Blog />,
+        }, 
+        {
+          path: "/about",
+          element: <About />,
+        }, 
+        {
+          path: "/contact",
+          element: <Contact />,
+        }, 
+        {
+          path: "/wishlist",
+          element: <Wishlist />,
+        }, 
+        {
+          path: "/login",
+          element: <Login />,
+        }, 
+        {
+          path: "/register",
+          element: <Register />,
+        }, 
+        {
+          path: "/add-puppy",
+          element: <AddPuppy />,
+        }, 
+        {
+          path: "/my-adoptions",
+          element: <Adoptions />,
+        }, 
+        {
+          path: "/message/:id",
+          element: <Message />,
+        }, 
+        {
+          path: "/my-messages",
+          element: <Messages />,
+        }, 
+        {
+          path: "/my-puppies",
+          element: <MyPuppies />,
+        }, 
+        {
+          path: "/puppies/:id",
+          element: <Puppy />,
+        },  
+        {
+          path: "*",
+          element: <NotFoundPage />,
+        }, 
+      ]
+    }, 
+    
+  ])
+
   return (
-    <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Home/>}></Route>
-      <Route path="/home" element={<Home/>}></Route>
-      <Route path="/pets" element={<Pets/>}></Route>
-      <Route path="/shop" element={<Shop/>}></Route>
-      <Route path="/about" element={<About/>}></Route>
-      <Route path="/contact" element={<Contact/>}></Route>
-      <Route path="/wishlist" element={<Wishlist/>}></Route>
-      <Route path="/auth" element={<Auth/>}></Route>
-      <Route path="/pets/:id" element={<Pet/>}></Route>
-      <Route path="/category/:category" element={<Shop/>}></Route>
-    </Routes>
-    </BrowserRouter>
+    <>
+      <RouterProvider router={router} />
+      <div className="non-responsive">
+        <h1>Hey you!</h1>
+        <p>This website is not responsive yet because I suck at responsivity T-T. Only view on 1440px wide screens.</p>
+
+      </div>
+    </>
+
+    // <BrowserRouter>
+    //   <Routes>
+    //     <Route path="/" element={<Home/>}></Route>
+    //     <Route path="/home" element={<Home/>}></Route>
+    //     <Route path="/puppies" element={<Puppies/>}></Route>
+    //     <Route path="/shop" element={<Shop/>}></Route>
+    //     <Route path="/blog" element={<Blog/>}></Route>
+    //     <Route path="/about" element={<About/>}></Route>
+    //     <Route path="/contact" element={<Contact/>}></Route>
+    //     <Route path="/wishlist" element={<Wishlist/>}></Route>
+    //     <Route path="/login" element={<Login/>}></Route>
+    //     <Route path="/puppies/:id" element={<Puppy/>}></Route>
+    //     <Route path="/breed/:breed" element={<Archive/>}></Route>
+    //     <Route path="*" element={<NotFoundPage />} />
+    //   </Routes>
+    // </BrowserRouter>
   )
 }
 

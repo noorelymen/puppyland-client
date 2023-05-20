@@ -1,0 +1,58 @@
+export const products = [
+  {
+    id: 1,
+    title: "Husky",
+    price: 12.55,
+    qty: 12,
+    img: "https://images.unsplash.com/photo-1563889362352-b0492c224f62?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8aHVza3l8ZW58MHwxfDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
+  },
+  {
+    id: 2,
+    title: "Husky",
+    price: 12.55,
+    qty: 12,
+    img: "https://images.unsplash.com/photo-1563889362352-b0492c224f62?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8aHVza3l8ZW58MHwxfDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
+  },
+  {
+    id: 3,
+    title: "Husky",
+    price: 12.55,
+    qty: 12,
+    img: "https://images.unsplash.com/photo-1563889362352-b0492c224f62?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8aHVza3l8ZW58MHwxfDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
+  },
+  {
+    id: 4,
+    title: "Husky",
+    price: 12.55,
+    qty: 12,
+    img: "https://images.unsplash.com/photo-1563889362352-b0492c224f62?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8aHVza3l8ZW58MHwxfDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
+  },
+  {
+    id: 5,
+    title: "Husky",
+    price: 12.55,
+    qty: 12,
+    img: "https://images.unsplash.com/photo-1563889362352-b0492c224f62?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8aHVza3l8ZW58MHwxfDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
+  },
+  {
+    id: 6,
+    title: "Husky",
+    price: 12.55,
+    qty: 12,
+    img: "https://images.unsplash.com/photo-1563889362352-b0492c224f62?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8aHVza3l8ZW58MHwxfDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
+  },
+  {
+    id: 7,
+    title: "Husky",
+    price: 12.55,
+    qty: 12,
+    img: "https://images.unsplash.com/photo-1563889362352-b0492c224f62?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8aHVza3l8ZW58MHwxfDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
+  },
+  {
+    id: 8,
+    title: "Husky",
+    price: 12.55,
+    qty: 12,
+    img: "https://images.unsplash.com/photo-1563889362352-b0492c224f62?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8aHVza3l8ZW58MHwxfDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
+  },
+];

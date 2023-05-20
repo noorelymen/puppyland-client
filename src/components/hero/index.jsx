@@ -10,17 +10,17 @@ const Hero = () => {
         <div className="container">
           <div className="column left">
             <h2 className="subtitle">
-              Save a life, adopt a pet!
+              Save a life, adopt a puppy!
             </h2>
             <h1 className="title">
               Find your <br/> furry friend
             </h1>
             <p className="description">
-              Browse our adoptable pets and find your new loyal companion. 
-              Join the thousands of happy pet owners who found their PetPal.
+              Browse our adoptable puppies and find your new loyal companion. 
+              Join the thousands of happy owners who found their best friend on PuppyLand.
             </p>
             <button className="button">
-              Browse our pets 
+              Browse our puppies 
               <FontAwesomeIcon className="button-icon" icon={faPaw} />
             </button>
           </div>
@@ -33,7 +33,7 @@ const Hero = () => {
 
             <div className="counter-box">
               <h2 className="counter-number">+520</h2>
-              <p className="counter-title">Rescued pets</p>
+              <p className="counter-title">Adopted puppies</p>
             </div>
           </div>  
         </div>  

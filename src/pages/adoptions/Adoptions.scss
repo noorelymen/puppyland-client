@@ -1,0 +1,106 @@
+.my-adoptions {
+    display: flex;
+    justify-content: center;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        margin-top: 150px;
+        width: 1400px;
+        padding: 50px 0px;
+        gap: 20px;
+
+        a {
+            font-weight: 400;
+            color: #4b8683;
+            text-decoration: underline;
+        }
+
+        hr {
+            border: .3px solid #eee;
+        }
+
+        .breadcrumbs {
+            font-weight: 300;
+            font-size: 13px;
+            color: #555;
+        }
+
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            h1 {
+                color: #4b8683;
+                font-size: 1.8rem;
+                font-family: Posterama;
+            }
+
+            .button {
+                width: 100%;
+                color: #fff;
+                background-color: #e28778;
+                font-size: .9rem;
+                padding: 10px 20px;
+            }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse; /* Added border-collapse property */
+            
+            tr {
+                height: 60px;
+
+                th {
+                    text-align: left;
+                    font-weight: 500;
+
+                    &:last-child {
+                        text-align: center;
+                    }
+                }
+               
+                td {
+                    img {
+                        width: 50px;
+                        height: 50px;
+                        border: 2px solid #e28778;
+                        border-radius: 50%;
+                        object-fit: cover;
+                        margin-left: 10px;
+                        margin-top: 8px;
+                    }
+
+                    .faIcon {
+                        color: #fff;
+                        border-radius: 50%;
+                        padding: 10px;
+                        background-color: #accde6;
+                        cursor: pointer;
+                        margin-left: 15px;
+
+                    }
+
+                    // &:nth-child(4) {
+                    //     padding-left: 25px !important;
+                    // }
+
+                    &:last-child {
+                        text-align: center;
+                    }
+                }
+
+                &:nth-child(even) {
+                    background-color: #f9f9f9;
+                }
+            }
+
+            tr:hover:not(:first-child){
+                background-color: #f3f3f3;
+            }
+
+        }
+    }
+}

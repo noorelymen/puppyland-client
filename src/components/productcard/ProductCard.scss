@@ -1,0 +1,22 @@
+.product-card {
+    margin: 0px 10px;
+    height: auto;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    .title {
+      font-family: 'Posterama';
+      font-weight: 600;
+      color: #000;
+      position: relative;
+    }
+  }
+

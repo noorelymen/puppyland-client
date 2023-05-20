@@ -1,0 +1,12 @@
+.auth .container {
+    padding: 100px 0px;
+    min-height: 80vh;
+    align-items: stretch;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}

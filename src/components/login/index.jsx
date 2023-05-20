@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { loginSchema } from "../../helper/validations";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { login } from "../../services/auth.service";
-export default function Login () {
+export default function LoginForm () {
   const { register, handleSubmit, formState: { errors }, reset } = useForm({
     resolver: yupResolver(loginSchema),
   });

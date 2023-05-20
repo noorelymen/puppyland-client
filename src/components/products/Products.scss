@@ -1,0 +1,29 @@
+.products {
+  display: flex;
+  justify-content: center;
+
+  .container {
+      flex-direction: column;
+      overflow: visible;
+  }
+
+  .product-cards {
+    width: 100%;
+    padding: 30px 0px;
+
+    .slider {
+      width: 100%;
+    }
+
+    .carousel-prev, .carousel-next {
+      width: 50px;
+      height: 50px;
+      background-color: #feb966;
+      color: #fff;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto 0px;
+    }
+  }
+}
