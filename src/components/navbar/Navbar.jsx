@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useLocation } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import userSvg from "../../assets/user.svg"
 import heartSvg from "../../assets/heart.svg"
 import cartSvg from "../../assets/cart.png"
@@ -7,6 +7,7 @@ import menuSvg from "../../assets/menu.svg"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faBone, faDog, faEnvelope, faArrowRightFromBracket, faPlus } from "@fortawesome/free-solid-svg-icons";
 import logo from "../../assets/puppy-care.png"
+import request from '../../utils/request'
 import "./navbar.scss"
 
 const Navbar = () => {
@@ -14,6 +15,7 @@ const Navbar = () => {
     const [open, setOpen] = useState(false);
 
     const {pathname} = useLocation()
+    const navigate = useNavigate()
 
     const isActive = () => {
         window.scrollY > 0 ? setActive(true) : setActive(false);
@@ -28,10 +30,16 @@ const Navbar = () => {
 
     }, [])
 
-    const currentUser = {
-        id: 1,
-        username: "Noor",
-        isOwner: true
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+    const handleLogout = async () => {
+        try {
+            await request.post("/auth/logout") 
+            localStorage.setItem("currentUser", null)
+            navigate('/login')
+        } catch(err) {
+            console.log(err);
+        }
     }
 
   return (
@@ -80,8 +88,8 @@ const Navbar = () => {
                 )}
                 {currentUser && (
                     <div className="user" onClick={() => setOpen(!open)}>
-                        <img src="https://avatars.githubusercontent.com/u/59196382?v=4" alt="" />
-                        <span>{currentUser?.username}</span>
+                        <img src={currentUser.img || "/img/noavatar.jpg"} alt="" />
+                        <span>{currentUser?.firstname}</span>
                         {open && (
                             <div className="options">
                                 <ul className="menu">
@@ -101,7 +109,7 @@ const Navbar = () => {
                                         <FontAwesomeIcon icon={faEnvelope} className='profile-icons'/><Link to="/my-messages">My messages</Link>
                                     </li>
                                     <li className="menu-item">
-                                        <FontAwesomeIcon icon={faArrowRightFromBracket} className='profile-icons'/><Link to="/logout">Logout</Link>
+                                        <FontAwesomeIcon icon={faArrowRightFromBracket} className='profile-icons'/><Link onClick={handleLogout}>Logout</Link>
                                     </li>
                                 </ul>
                             </div>

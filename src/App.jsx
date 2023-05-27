@@ -18,8 +18,7 @@ import About from './pages/about/About'
 import Contact from './pages/contact/Contact'
 import Wishlist from './pages/wishlist/Wishlist'
 import Login from './pages/login/Login'
-import NotFoundPage from "./pages/404/NotFound";
-import Register from './pages/register/Register'
+import NotFoundPage from "./pages/404/NotFound"
 import AddPuppy from './pages/addpuppy/AddPuppy'
 import Adoptions from './pages/adoptions/Adoptions'
 import Message from './pages/message/Message'
@@ -73,10 +72,6 @@ function App() {
         {
           path: "/login",
           element: <Login />,
-        }, 
-        {
-          path: "/register",
-          element: <Register />,
         }, 
         {
           path: "/add-puppy",

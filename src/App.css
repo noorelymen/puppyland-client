@@ -141,3 +141,9 @@ h1, h2, h3, h4, h5, h6 {
     margin: 1rem;
   }
 } */
+
+/* TOASTIFY */
+.custom-toast-container {
+  margin-top: 70px; /* Adjust the value to move the notifications down */
+}
+
