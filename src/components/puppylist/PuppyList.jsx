@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from "react";
 import PuppyCard from "../../components/puppycard/PuppyCard";
 import axios from "axios";
-import InfiniteScroll from "react-infinite-scroll-component";
 import "./PuppyList.scss";
 
 const PuppyList = ({ breed, filters, sort, resetFilters }) => {
   const [puppies, setPuppies] = useState([]);
   const [filteredPuppies, setFilteredPuppies] = useState([]);
-  const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
 
   useEffect(() => {
     const getPuppies = async () => {
@@ -16,7 +13,7 @@ const PuppyList = ({ breed, filters, sort, resetFilters }) => {
         const query = breed ? `?breed=${breed}` : "";
         const res = await axios.get(
           // `http://localhost:8800/api/puppies${query}`
-          `https://puppyland.onrender.com/api/${query}`
+          `https://puppyland.onrender.com/api/puppies${query}`
         );
         setPuppies(res.data.puppies);
       } catch (err) {
@@ -52,45 +49,19 @@ const PuppyList = ({ breed, filters, sort, resetFilters }) => {
     setFilteredPuppies(filtered);
   }, [puppies, filters]);
 
-  const fetchMorePuppies = async () => {
-    try {
-      const query = breed ? `?breed=${breed}` : "";
-      const res = await axios.get(
-        // `http://localhost:8800/api/puppies${query}&page=${page + 1}`
-        `https://puppyland.onrender.com/api/${query}&page=${page + 1}`
-      );
-
-      if (res.data.puppies.length > 0) {
-        setPage((prevPage) => prevPage + 1);
-        setPuppies((prevPuppies) => [...prevPuppies, ...res.data.puppies]);
-      } else {
-        setHasMore(false);
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
   return (
     <div className="section puppies">
       <div className="container">
         {filteredPuppies && filteredPuppies.length === 0 ? (
           <h1>No puppies to show here!</h1>
         ) : (
-          <InfiniteScroll
-            dataLength={filteredPuppies.length}
-            next={fetchMorePuppies}
-            hasMore={hasMore}
-            loader={<h4>Loading...</h4>}
-          >
-            <div className="puppy-cards">
-              {filteredPuppies.map((item) => (
-                <div className="puppy-item" key={item._id}>
-                  <PuppyCard item={item} />
-                </div>
-              ))}
-            </div>
-          </InfiniteScroll>
+          <div className="puppy-cards">
+            {filteredPuppies.map((item) => (
+              <div className="puppy-item" key={item._id}>
+                <PuppyCard item={item} />
+              </div>
+            ))}
+          </div>
         )}
       </div>
     </div>
