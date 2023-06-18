@@ -49,7 +49,14 @@ const Puppies = () => {
             <span className="breadcrumbs">
               PUPPYLAND &gt; PUPPIES &gt; BREED &gt; HUSKIES
             </span>
-            <h1>Huskies</h1>
+            <h1>
+              {breedParam
+                ? breedParam
+                    .split("-")
+                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(" ")
+                : "Puppies"}
+            </h1>
           </div>
           <div className="menu">
             <div className="filters-group">
@@ -87,7 +94,7 @@ const Puppies = () => {
                 name="breed"
                 onChange={handleFilters}
               >
-                <option disabled selected defaultValue>
+                <option disabled defaultValue>
                   Breed
                 </option>
                 <option value="unknown-nobreed">Unknown</option>

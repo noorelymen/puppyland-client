@@ -5,6 +5,27 @@
 .puppy-photo {
   z-index: 2;
   border-radius: 20px;
+  position: relative;
+}
+
+.puppy-photo .available-label,
+.puppy-photo .unavailable-label {
+  position: absolute;
+  padding: 8px 30px;
+  background-color: #9fc64d;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 20px;
+  top: 20px;
+  left: 20px;
+}
+
+.puppy-photo .available-label {
+  background-color: #9fc64d;
+}
+
+.puppy-photo .unavailable-label {
+  background-color: #cc3249;
 }
 
 .puppy-card-image {

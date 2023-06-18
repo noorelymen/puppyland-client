@@ -1,31 +1,63 @@
-import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
-import './Adoptions.scss'
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaperPlane, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { useQuery } from "@tanstack/react-query";
+import request from "../../utils/request";
+import "./Adoptions.scss";
 
 const Adoptions = () => {
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-  const currentUser = {
-    id: 1,
-    username: "Noor",
-    isOwner: true
-  }
+  const navigate = useNavigate();
 
   useEffect(() => {
-    window.scrollTo(0, 0); 
+    window.scrollTo(0, 0);
   }, []);
 
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["adoptions"],
+    queryFn: () =>
+      request.get(`/adoptions/`).then((res) => {
+        return res.data;
+      }),
+  });
+
+  const handleContact = async (adoption) => {
+    console.log("Adoption", adoption);
+    const rescuerId = adoption.rescuerId;
+    const adopterId = adoption.adopterId;
+    const id = rescuerId + adopterId;
+
+    console.log("id", id);
+
+    try {
+      const res = await request.get(`/conversations/conversation/${id}`);
+      navigate(`/message/${res.data._id}`);
+    } catch (err) {
+      if (err.response.status === 404) {
+        console.log("currentUser.isRescuer", currentUser.isRescuer);
+        console.log("adopterId", adopterId);
+        console.log("rescuerId", rescuerId);
+        const res = await request.post(`/conversations/`, {
+          to: currentUser.isRescuer ? adopterId : rescuerId,
+        });
+
+        console.log(res.data);
+        navigate(`/message/${res.data._id}`);
+      }
+    }
+  };
+
   return (
-    <div className='my-adoptions'>
+    <div className="my-adoptions">
       <div className="container">
-      <span className="breadcrumbs">PUPPYLAND &gt; MY ADOPTIONS</span>
+        <span className="breadcrumbs">PUPPYLAND &gt; MY ADOPTIONS</span>
 
         <div className="title">
-           
           <h1>My Adoptions</h1>
-          <Link to="/add">
-            <button className='button'>Adopt a new puppy</button>  
+          <Link to="/puppies">
+            <button className="button">Adopt a new puppy</button>
           </Link>
         </div>
         <hr />
@@ -37,42 +69,52 @@ const Adoptions = () => {
             <th>{currentUser.isOwner ? "Adopter" : "Owner"}</th>
             <th>Contact</th>
           </tr>
-          <tr>
-            <td>
-              <img src="https://images.pexels.com/photos/10318145/pexels-photo-10318145.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="" />
-            </td>
-            <td>
-              <Link to="/puppies/641b4dcc41dd3933f084e6ad">Clover</Link>
-            </td>
-            <td>Cavalier King Charles</td>
-            <td>Noor Mebarki</td>
-            <td><FontAwesomeIcon className='faIcon' icon={faPaperPlane} /></td>
-          </tr>
-          <tr>
-            <td>
-              <img src="https://images.unsplash.com/photo-1530126483408-aa533e55bdb2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjZ8fGRvZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60" alt="" />
-            </td>
-            <td>
-              <Link to="/puppies/641b4e0741dd3933f084e6af">Blue Ivy</Link>
-            </td>
-            <td>Australian Shepherd</td>
-            <td>Leila Mebarki</td>
-            <td><FontAwesomeIcon className='faIcon' icon={faPaperPlane} /></td>
-          </tr>
-          <tr>
-            <td>
-              <img src="https://images.pexels.com/photos/10318145/pexels-photo-10318145.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="" />
-            </td>
-            <td>
-              <Link to="/puppies/641a07c341dd3933f084e697">Raxon</Link></td>
-            <td>Husky</td>
-            <td>John Doe</td>
-            <td><FontAwesomeIcon className='faIcon' icon={faPaperPlane} /></td>
-          </tr>
+
+          {isLoading ? (
+            <tr>
+              <td colSpan="5" className="message-column">
+                Loading
+              </td>
+            </tr>
+          ) : error ? (
+            <tr>
+              <td colSpan="5" className="message-column">
+                Something went wrong!
+              </td>
+            </tr>
+          ) : data.adoptions && data.adoptions.length > 0 ? (
+            data.adoptions.map((adoption) => (
+              <tr key={adoption._id}>
+                <td>
+                  <img src={adoption.photo} alt="" />
+                </td>
+                <td>
+                  <Link to={`/puppy/${adoption.puppyId}`}>{adoption.name}</Link>
+                </td>
+                <td>{adoption.breed}</td>
+                <td>{data.owner.firstname + " " + data.owner.lastname} </td>
+                <td>
+                  <FontAwesomeIcon
+                    className="faIcon"
+                    icon={faPaperPlane}
+                    onClick={() => handleContact(adoption)}
+                  />
+                  <FontAwesomeIcon className="faIcon" icon={faTrash} />
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="5" className="message-column">
+                No applications for adoption yet!{" "}
+                <Link to={`/puppies/`}>Browse puppies for adoption.</Link>
+              </td>
+            </tr>
+          )}
         </table>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Adoptions
+export default Adoptions;

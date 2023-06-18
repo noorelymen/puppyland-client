@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-//LOCALHOST
-const baseUrl = "http://localhost:8800/api";
-//LIVE
-//const baseUrl = "https://puppyland-api.onrender.com/api";
+// LOCALHOST
+const baseUrl = "http://localhost:8800/api/";
+// LIVE
+// const baseUrl = "https://puppyland-api.onrender.com/api";
 
 const useFetch = (url) => {
   const [data, setData] = useState(null);
@@ -12,20 +12,34 @@ const useFetch = (url) => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
-    axios
-      .get(baseUrl + url)
-      .then((response) => {
-        setLoading(false);
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get(baseUrl + url);
         setData(response.data);
-      })
-      .catch((err) => {
-        setLoading(false);
+      } catch (err) {
         setError(err);
-      });
-  }, []);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  return { data, error, loading };
+    fetchData();
+  }, [url]);
+
+  const refetch = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get(baseUrl + url);
+      setData(response.data);
+    } catch (err) {
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { data, error, loading, refetch };
 };
 
 export default useFetch;

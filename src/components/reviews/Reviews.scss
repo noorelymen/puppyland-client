@@ -1,0 +1,58 @@
+// REVIEWS
+.reviews {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  .add {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    h3 {
+      color: #4b8684;
+      font-size: 1.5rem;
+    }
+
+    .add-review-form {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+
+      textarea,
+      input,
+      select,
+      button {
+        padding: 20px;
+        border-radius: 20px;
+        border: 1px solid #c1dcda;
+        width: 100%;
+      }
+
+      select {
+        width: 31%;
+        align-self: flex-end;
+      }
+
+      button {
+        border: none;
+        background-color: #67aca8;
+        color: #fff;
+        align-items: flex-start;
+        width: 66%;
+        cursor: pointer;
+      }
+    }
+  }
+
+  h2 {
+    color: #4b8684;
+    font-size: 2rem;
+  }
+
+  .notation {
+    color: rgb(255, 183, 0);
+  }
+}

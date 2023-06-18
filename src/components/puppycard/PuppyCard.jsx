@@ -14,6 +14,11 @@ export default function puppyCard({ item }) {
   return (
     <div className="puppy-card" onClick={() => navigate(`/puppy/${item._id}`)}>
       <div className="puppy-photo">
+        <div
+          className={item.available ? "available-label" : "unavailable-label"}
+        >
+          {item.available ? "Available!" : "Unavailable!"}
+        </div>
         <img src={item.photo} className="puppy-card-image" alt={item.name} />
       </div>
       <div className="puppy-details">
@@ -46,12 +51,15 @@ export default function puppyCard({ item }) {
           >
             Details
           </button>
-          <button
-            className="adopt-btn btn"
-            onClick={() => navigate(`/puppies/${item._id}`)}
-          >
-            Adopt now
-          </button>
+
+          {item.available ? (
+            <button
+              className="adopt-btn btn"
+              onClick={() => navigate(`/puppies/${item._id}`)}
+            >
+              Adopt now
+            </button>
+          ) : null}
         </div>
       </div>
     </div>

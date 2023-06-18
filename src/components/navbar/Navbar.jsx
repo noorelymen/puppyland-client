@@ -75,9 +75,9 @@ const Navbar = () => {
             <li className="menu-item">
               <Link to="/shop">Shop</Link>
             </li>
-            <li className="menu-item">
+            {/* <li className="menu-item">
               <Link to="/blog">Blog</Link>
-            </li>
+            </li> */}
             <li className="menu-item">
               <Link to="/about">About</Link>
             </li>
