@@ -15,7 +15,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import logo from "../../assets/puppy-care.png";
 import request from "../../utils/request";
-import "./navbar.scss";
+import "./Navbar.scss";
 
 const Navbar = () => {
   const [active, setActive] = useState(false);
