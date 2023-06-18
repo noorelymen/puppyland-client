@@ -2,7 +2,8 @@ import axios from "axios";
 export const login = ({ email, password }) => {
   //LOCALHOST
   axios
-    .post("http://localhost:8800/api/auth/login", { email, password })
+    //.post("http://localhost:8800/api/auth/login", { email, password })
+    .post("https://puppyland.onrender.com/api/auth/login", { email, password })
     .then((res) => {
       const token = res.data.token;
       localStorage.setItem("token", JSON.stringify(token));

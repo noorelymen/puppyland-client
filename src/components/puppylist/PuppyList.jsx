@@ -15,7 +15,8 @@ const PuppyList = ({ breed, filters, sort, resetFilters }) => {
       try {
         const query = breed ? `?breed=${breed}` : "";
         const res = await axios.get(
-          `http://localhost:8800/api/puppies${query}`
+          // `http://localhost:8800/api/puppies${query}`
+          `https://puppyland.onrender.com/api/${query}`
         );
         setPuppies(res.data.puppies);
       } catch (err) {
@@ -55,7 +56,8 @@ const PuppyList = ({ breed, filters, sort, resetFilters }) => {
     try {
       const query = breed ? `?breed=${breed}` : "";
       const res = await axios.get(
-        `http://localhost:8800/api/puppies${query}&page=${page + 1}`
+        // `http://localhost:8800/api/puppies${query}&page=${page + 1}`
+        `https://puppyland.onrender.com/api/${query}&page=${page + 1}`
       );
 
       if (res.data.puppies.length > 0) {
