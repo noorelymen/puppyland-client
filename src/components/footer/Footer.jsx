@@ -1,16 +1,16 @@
-import React from 'react'
-import { Link } from "react-router-dom"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import React from "react";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInstagram, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import {
-    faBone,
-    faPaw,
-    faFeatherPointed,
-    faCarrot,
-    faPhone,
-    faEnvelope
-  } from "@fortawesome/free-solid-svg-icons";
-import "./footer.scss"
+  faBone,
+  faPaw,
+  faFeatherPointed,
+  faCarrot,
+  faPhone,
+  faEnvelope,
+} from "@fortawesome/free-solid-svg-icons";
+import "./Footer.scss";
 
 const Footer = () => {
   return (
@@ -35,7 +35,9 @@ const Footer = () => {
               <li>
                 <Link to="mailto:contact@PUPPYLAND.com">
                   <FontAwesomeIcon icon={faEnvelope} />
-                  <span className="icon-list">21 Rue Didouche Mourad, Algiers</span>
+                  <span className="icon-list">
+                    21 Rue Didouche Mourad, Algiers
+                  </span>
                 </Link>
               </li>
             </ul>
@@ -136,9 +138,11 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="copyright">Made with by Noor © Copyright 2021, All Rights Reserved</div>
+      <div className="copyright">
+        Made with by Noor © Copyright 2021, All Rights Reserved
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default Footer;
